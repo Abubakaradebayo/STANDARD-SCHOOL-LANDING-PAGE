@@ -121,6 +121,15 @@ export function Navbar() {
       >
         <div className="absolute inset-0 bg-[var(--navy-950)]/95 backdrop-blur-xl" />
         <nav className="relative flex flex-col items-center justify-center gap-4 px-6 py-10">
+          <div className="relative h-16 w-16 mb-2">
+            <Image
+              src={schoolInfo.logo}
+              alt={schoolInfo.logoAlt}
+              fill
+              className="object-contain drop-shadow-lg"
+              sizes="64px"
+            />
+          </div>
           {navItems.map((item, i) => (
             <Link
               key={item.href}
