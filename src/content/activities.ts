@@ -54,10 +54,11 @@ export const activities: ActivityPost[] = [
       "/images/activities/assembly/f345d90d-ee0e-43d5-9c3e-12dfdd6cccb7.JPG",
     ],
     content: [
-      "Use this post for your weekly or termly assembly updates. Replace the text with what happened and who participated.",
-      "Drop your assembly photos into /public/images/activities/assembly and keep the file names above, or update the paths here.",
+      // "Use this post for your weekly or termly assembly updates. Replace the text with what happened and who participated.",
+      // "Drop your assembly photos into /public/images/activities/assembly and keep the file names above, or update the paths here.",
     ],
   },
+  
   {
     slug: "student-excursion-day",
     title: "Student Excursion Day",
@@ -108,8 +109,8 @@ export const activities: ActivityPost[] = [
       "/images/activities/excursion/IMG_2390.JPG",
     ],
     content: [
-      "Use this section to describe where students visited, what they learned, and why the excursion was important.",
-      "Drop excursion photos into /public/images/activities/excursion and keep the file names above, or edit paths here.",
+      // "Use this section to describe where students visited, what they learned, and why the excursion was important.",
+      // "Drop excursion photos into /public/images/activities/excursion and keep the file names above, or edit paths here.",
     ],
   },
   {
@@ -152,8 +153,8 @@ export const activities: ActivityPost[] = [
       "/images/activities/cultural-day/IMG_2244.JPG",
     ],
     content: [
-      "Use this post for your cultural day recap. Mention featured cultures, performances, and awards.",
-      "Drop cultural day photos into /public/images/activities/cultural-day and keep the file names above, or edit paths here.",
+      // "Use this post for your cultural day recap. Mention featured cultures, performances, and awards.",
+      // "Drop cultural day photos into /public/images/activities/cultural-day and keep the file names above, or edit paths here.",
     ],
   },
   {
@@ -191,8 +192,8 @@ export const activities: ActivityPost[] = [
       "/images/activities/class-activities/IMG_2395.JPG",
     ],
     content: [
-      "Use this post to highlight classroom learning moments for parents and prospective families.",
-      "Drop class activity photos into /public/images/activities/class-activities and keep the file names above, or edit paths here.",
+      // "Use this post to highlight classroom learning moments for parents and prospective families.",
+      // "Drop class activity photos into /public/images/activities/class-activities and keep the file names above, or edit paths here.",
     ],
   },
   // {
@@ -244,8 +245,8 @@ export const activities: ActivityPost[] = [
       "/images/activities/sport/IMG_2401.JPG",
     ],
     content: [
-      "Use this post for sports activity updates, match summaries, or training sessions.",
-      "Drop sports photos into /public/images/activities/sport and add them to the list here if you include more.",
+      // "Use this post for sports activity updates, match summaries, or training sessions.",
+      // "Drop sports photos into /public/images/activities/sport and add them to the list here if you include more.",
     ],
   },
   // {
@@ -307,8 +308,8 @@ export const activities: ActivityPost[] = [
       "/images/activities/extra-curricular/IMG_2387.JPG",
     ],
     content: [
-      "Use this post for clubs, practical lessons, excursions within campus, and other enrichment activities.",
-      "Drop extra-curricular photos into /public/images/activities/extra-curricular and list them here.",
+      // "Use this post for clubs, practical lessons, excursions within campus, and other enrichment activities.",
+      // "Drop extra-curricular photos into /public/images/activities/extra-curricular and list them here.",
     ],
   },
 ];
