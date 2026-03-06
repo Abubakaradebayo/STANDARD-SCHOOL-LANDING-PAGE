@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  /* Navy spectrum */
+  --navy-950: #0a1628;
+  --navy-900: #0f2042;
+  --navy-800: #152d5e;
+  --navy-700: #1b3a7a;
+  --navy-600: #1d4ed8;
+
+  /* Gold accent */
+  --gold: #d4a853;
+  --gold-light: #f0d78c;
+  --gold-dark: #b8922e;
+
+  /* Neutrals */
+  --slate-950: #0b1120;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+
+  /* Semantic tokens */
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --text: #0f2042;
+  --muted: #475569;
+  --brand: #1d4ed8;
+  --brand-dark: #152d5e;
+  --accent: #dbeafe;
+  --accent-soft: #bfdbfe;
+  --border: #e2e8f0;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: var(--font-inter, "Inter", "Segoe UI", sans-serif);
+}
+
+.font-heading {
+  font-family: var(--font-playfair, "Playfair Display", Georgia, serif);
+}
+
+/* ─── Animations ─── */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Scroll reveal ─── */
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate][data-animate="soft"] {
+  transform: translateY(12px);
+}
+
+[data-animate][data-delay="1"] {
+  transition-delay: 0.1s;
+}
+[data-animate][data-delay="2"] {
+  transition-delay: 0.2s;
+}
+[data-animate][data-delay="3"] {
+  transition-delay: 0.3s;
+}
+[data-animate][data-delay="4"] {
+  transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── Utility classes ─── */
+
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+main {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.gradient-navy {
+  background: linear-gradient(135deg, var(--navy-950), var(--navy-900), var(--navy-800));
+}
+
+.gradient-gold {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+}
+
+.section-dark {
+  background: linear-gradient(135deg, var(--navy-950), var(--navy-900));
+  color: #ffffff;
+}
+
+.section-light {
+  background: var(--surface);
+}
+
+.section-accent {
+  background: linear-gradient(135deg, var(--slate-50), #eef2ff);
+}
+
+/* ─── Carousel ─── */
+
+.activities-track {
+  --carousel-step: 100%;
+}
+
+@media (min-width: 768px) {
+  .activities-track {
+    --carousel-step: 33.333333%;
+  }
+}
+
+/* ─── Gold underline accent ─── */
+
+.gold-underline::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+.gold-underline-center::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
