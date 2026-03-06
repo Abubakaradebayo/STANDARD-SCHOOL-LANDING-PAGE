@@ -33,9 +33,11 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-sm border-b border-[var(--border)]"
-          : "bg-transparent",
+        open
+          ? "bg-[var(--navy-950)] border-b border-white/10"
+          : scrolled
+            ? "bg-white/95 backdrop-blur-lg shadow-sm border-b border-[var(--border)]"
+            : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-18 w-full max-w-6xl items-center justify-between px-4 md:px-6">
@@ -54,7 +56,7 @@ export function Navbar() {
             <p
               className={cn(
                 "font-heading text-sm font-bold transition-colors md:text-base",
-                scrolled ? "text-[var(--text)]" : "text-white",
+                scrolled && !open ? "text-[var(--text)]" : "text-white",
               )}
             >
               {schoolInfo.name}
@@ -97,7 +99,7 @@ export function Navbar() {
         <button
           className={cn(
             "inline-flex h-10 w-10 items-center justify-center rounded-lg transition-colors lg:hidden",
-            scrolled
+            scrolled && !open
               ? "text-[var(--text)] hover:bg-[var(--surface)]"
               : "text-white hover:bg-white/10",
           )}
