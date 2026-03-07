@@ -68,8 +68,8 @@ export default function AboutPage() {
             const Icon = card.icon;
             return (
               <Card key={card.title} variant="elevated" data-animate="soft" data-delay={String(i + 1)}>
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--gold)]/10 text-[var(--gold-dark)]">
-                  <Icon className="h-7 w-7" />
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--gold)]/8 text-[var(--gold-dark)]">
+                  <Icon className="h-6 w-6" />
                 </div>
                 <CardTitle className="mt-4 text-xl">{card.title}</CardTitle>
                 <CardDescription className="mt-2">{card.description}</CardDescription>
@@ -149,7 +149,7 @@ export default function AboutPage() {
               const Icon = facilityIcons[i];
               return (
                 <Card key={facility} variant="elevated" className="flex items-center gap-4 p-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/10 text-[var(--brand)]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="text-sm font-medium text-[var(--text)]">{facility}</p>

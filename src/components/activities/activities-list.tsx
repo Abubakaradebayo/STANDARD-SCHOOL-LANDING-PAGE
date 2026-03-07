@@ -40,7 +40,7 @@ export function ActivitiesList() {
             className={cn(
               "rounded-full px-4 py-2 text-sm font-medium transition-all",
               category === item
-                ? "bg-[var(--gold)] text-[var(--navy-950)] shadow-sm"
+                ? "bg-[var(--gold)] text-[var(--navy-950)]"
                 : "bg-[var(--surface)] text-[var(--muted)] hover:bg-[var(--accent)] border border-[var(--border)]",
             )}
             onClick={() => setCategory(item)}

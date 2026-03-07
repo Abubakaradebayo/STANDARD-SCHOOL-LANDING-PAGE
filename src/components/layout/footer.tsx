@@ -50,7 +50,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-all hover:border-[var(--gold)] hover:text-[var(--gold)] hover:scale-110"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-colors hover:border-[var(--gold)] hover:text-[var(--gold)]"
                   aria-label={label}
                 >
                   <Icon className="h-4 w-4" />

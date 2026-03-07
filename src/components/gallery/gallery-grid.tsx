@@ -35,7 +35,7 @@ export function GalleryGrid() {
             className={cn(
               "rounded-full px-4 py-2 text-sm font-medium transition-all",
               category === item
-                ? "bg-[var(--gold)] text-[var(--navy-950)] shadow-sm"
+                ? "bg-[var(--gold)] text-[var(--navy-950)]"
                 : "bg-[var(--surface)] text-[var(--muted)] hover:bg-[var(--accent)] border border-[var(--border)]",
             )}
             onClick={() => setCategory(item)}
@@ -58,7 +58,7 @@ export function GalleryGrid() {
               alt={image.alt}
               width={600}
               height={420}
-              className="h-auto w-full transition duration-500 group-hover:scale-105"
+              className="h-auto w-full transition duration-500 group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 50vw, 33vw"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-[var(--navy-950)]/0 transition-all duration-300 group-hover:bg-[var(--navy-950)]/40">

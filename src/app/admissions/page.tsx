@@ -91,12 +91,12 @@ export default function AdmissionsPage() {
                     data-delay={String(i + 1)}
                   >
                     {/* Step number circle */}
-                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-[var(--navy-950)] font-bold shadow-md">
+                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-[var(--navy-950)] font-bold ring-4 ring-[var(--gold)]/20">
                       {item.step}
                     </div>
                     <Card variant="elevated" className="flex-1">
                       <div className="flex items-start gap-3">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/10 text-[var(--brand)]">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
                           <Icon className="h-5 w-5" />
                         </div>
                         <div>

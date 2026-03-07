@@ -110,8 +110,8 @@ export default function AcademicsPage() {
                   <div
                     className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${section.color}`}
                   />
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--brand)]/10 text-[var(--brand)]">
-                    <Icon className="h-7 w-7" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
+                    <Icon className="h-6 w-6" />
                   </div>
                   <CardTitle className="mt-4 text-xl">{section.level}</CardTitle>
                   <CardDescription className="mt-2">{section.details}</CardDescription>
@@ -162,7 +162,7 @@ export default function AcademicsPage() {
                   data-animate="soft"
                   data-delay={String(i + 1)}
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--gold)]/10 text-[var(--gold-dark)]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--gold)]/8 text-[var(--gold-dark)]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="font-medium text-[var(--text)]">{item.name}</p>

@@ -6,12 +6,12 @@ type ButtonVariant = "default" | "secondary" | "outline" | "ghost" | "gold" | "o
 type ButtonSize = "default" | "sm" | "lg" | "xl" | "icon";
 
 const variantClasses: Record<ButtonVariant, string> = {
-  default: "bg-[var(--brand)] text-white hover:bg-[var(--brand-dark)] shadow-sm hover:shadow-md",
+  default: "bg-[var(--brand)] text-white hover:bg-[var(--brand-dark)]",
   secondary: "bg-[var(--accent)] text-[var(--text)] hover:bg-[var(--accent-soft)]",
   outline:
     "border border-[var(--border)] bg-white text-[var(--text)] hover:bg-[var(--surface)] hover:border-[var(--brand)]",
   ghost: "bg-transparent text-[var(--text)] hover:bg-[var(--accent)]",
-  gold: "bg-[var(--gold)] text-[var(--navy-950)] hover:bg-[var(--gold-dark)] shadow-sm hover:shadow-md font-semibold",
+  gold: "bg-[var(--gold)] text-[var(--navy-950)] hover:bg-[var(--gold-dark)] font-semibold",
   "outline-white":
     "border-2 border-white/40 bg-transparent text-white hover:bg-white/10 hover:border-white/70",
 };
@@ -25,7 +25,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]";
+  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;

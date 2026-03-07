@@ -63,8 +63,8 @@ export default function ContactPage() {
                 data-animate="soft"
                 data-delay={String(i + 1)}
               >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--gold)]/10 text-[var(--gold-dark)]">
-                  <Icon className="h-6 w-6" />
+                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--gold)]/8 text-[var(--gold-dark)]">
+                  <Icon className="h-5 w-5" />
                 </div>
                 <CardTitle className="mt-3 text-base">{card.title}</CardTitle>
                 <div className="mt-2 space-y-1 text-sm text-[var(--muted)]">

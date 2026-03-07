@@ -105,7 +105,7 @@ export default function HomePage() {
                 src={schoolInfo.logo}
                 alt={schoolInfo.logoAlt}
                 fill
-                className="object-contain drop-shadow-2xl"
+                className="object-contain"
                 sizes="112px"
                 priority
               />
@@ -167,8 +167,8 @@ export default function HomePage() {
               const Icon = highlightIcons[i];
               return (
                 <Card key={item} variant="elevated" className="flex items-start gap-4 p-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--brand)]/10 text-[var(--brand)]">
-                    <Icon className="h-6 w-6" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
+                    <Icon className="h-5 w-5" />
                   </div>
                   <CardTitle className="text-base">{item}</CardTitle>
                 </Card>
@@ -210,9 +210,9 @@ export default function HomePage() {
                 return (
                   <div
                     key={pillar.title}
-                    className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-white p-4 transition-all hover:shadow-md"
+                    className="flex items-start gap-3 rounded-2xl bg-white p-4 ring-1 ring-black/5 shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-all duration-200 ease-out hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.1)] hover:ring-black/10"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--gold)]/10 text-[var(--gold-dark)]">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--gold)]/8 text-[var(--gold-dark)]">
                       <Icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -279,8 +279,8 @@ export default function HomePage() {
                   data-delay={String(i + 1)}
                 >
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${program.color}`} />
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--brand)]/10 text-[var(--brand)]">
-                    <Icon className="h-7 w-7" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
+                    <Icon className="h-6 w-6" />
                   </div>
                   <CardTitle className="mt-4 text-xl">{program.title}</CardTitle>
                   <CardDescription className="mt-2">{program.desc}</CardDescription>
@@ -350,7 +350,7 @@ export default function HomePage() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
+                  className="object-cover transition duration-500 group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-[var(--navy-950)]/0 transition-all duration-300 group-hover:bg-[var(--navy-950)]/40">

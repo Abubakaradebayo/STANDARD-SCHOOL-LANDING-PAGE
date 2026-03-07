@@ -36,7 +36,7 @@ export function ActivityGallery({ images, title }: ActivityGalleryProps) {
               src={image}
               alt={`${title} image ${index + 1}`}
               fill
-              className="object-cover transition duration-300 group-hover:scale-105"
+              className="object-cover transition duration-300 group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 50vw, 33vw"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-[var(--navy-950)]/0 transition group-hover:bg-[var(--navy-950)]/40">

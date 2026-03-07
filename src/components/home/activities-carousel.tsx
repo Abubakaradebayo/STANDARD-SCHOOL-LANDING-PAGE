@@ -57,7 +57,7 @@ export function ActivitiesCarousel({ items }: { items: ActivityPost[] }) {
       <button
         type="button"
         onClick={goPrev}
-        className="absolute left-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--navy-900)] text-white shadow-lg transition-all hover:bg-[var(--navy-800)] hover:scale-110 md:left-3 md:h-11 md:w-11"
+        className="absolute left-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--navy-900)] text-white transition-colors hover:bg-[var(--navy-800)] md:left-3 md:h-11 md:w-11"
         aria-label="Previous activities"
       >
         <ChevronLeft className="h-5 w-5" />
@@ -65,7 +65,7 @@ export function ActivitiesCarousel({ items }: { items: ActivityPost[] }) {
       <button
         type="button"
         onClick={goNext}
-        className="absolute right-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--navy-900)] text-white shadow-lg transition-all hover:bg-[var(--navy-800)] hover:scale-110 md:right-3 md:h-11 md:w-11"
+        className="absolute right-2 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--navy-900)] text-white transition-colors hover:bg-[var(--navy-800)] md:right-3 md:h-11 md:w-11"
         aria-label="Next activities"
       >
         <ChevronRight className="h-5 w-5" />

@@ -36,13 +36,13 @@ export function Navbar() {
         open
           ? "bg-[var(--navy-950)] border-b border-white/10"
           : scrolled
-            ? "bg-white/95 backdrop-blur-lg shadow-sm border-b border-[var(--border)]"
+            ? "bg-white/95 backdrop-blur-lg border-b border-[var(--border)]"
             : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-18 w-full max-w-6xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative h-11 w-11 overflow-hidden rounded-full border-2 border-[var(--gold)]/40 bg-white shadow-sm">
+          <div className="relative h-11 w-11 overflow-hidden rounded-full border-2 border-[var(--gold)]/40 bg-white">
             <Image
               src={schoolInfo.logo}
               alt={schoolInfo.logoAlt}
