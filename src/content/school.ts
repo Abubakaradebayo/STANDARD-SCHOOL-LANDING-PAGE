@@ -3,7 +3,7 @@ export const schoolInfo = {
   shortName: "S.I.S",
   logo: "/logo/logo.png",
   logoAlt: "Standard Schools, Ilorin logo",
-  slogan: "One and only in Kwara.",
+  slogan: "At Standard, we have the best...",
   description:
     "STANDARD SCHOOLS, ILORIN provides a nurturing and inclusive environment that fosters academic excellence, critical thinking, and strong character.",
   address: "Plot 17, Block TPS 235, Mandate Area, Ilorin, Kwara State",
