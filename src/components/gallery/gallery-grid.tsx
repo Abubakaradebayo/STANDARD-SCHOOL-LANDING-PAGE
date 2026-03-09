@@ -46,20 +46,20 @@ export function GalleryGrid() {
       </div>
 
       {/* Masonry grid */}
-      <div className="columns-2 gap-4 space-y-4 md:columns-3">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {filtered.map((image, index) => (
           <button
             key={`${image.src}-${index}`}
             onClick={() => setActiveImage(index)}
-            className="group relative w-full overflow-hidden rounded-xl"
+            className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl"
           >
             <Image
               src={image.src}
               alt={image.alt}
               width={600}
               height={420}
-              className="h-auto w-full transition duration-500 group-hover:scale-[1.02]"
-              sizes="(max-width: 768px) 50vw, 33vw"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-[var(--navy-950)]/0 transition-all duration-300 group-hover:bg-[var(--navy-950)]/40">
               <Expand className="h-6 w-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
