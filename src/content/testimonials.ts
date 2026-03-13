@@ -6,21 +6,21 @@ export type Testimonial = {
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Mrs. Oladipo",
-    role: "Parent (Primary)",
+    name: "Mrs Danjuma",
+    role: "Parent",
     message:
-      "My son became more confident in reading and public speaking within one term. The teachers are patient and very intentional.",
+      "My daughter has grown remarkably since joining in Primary 2. The teachers understand each child and give real academic care.",
   },
   {
-    name: "Mr. Musa",
-    role: "Parent (Secondary)",
+    name: "Eng. Solomon Edogbanya",
+    role: "Parent",
     message:
-      "The academic structure and discipline are excellent. I also appreciate how the school keeps parents informed.",
+      "The school combines academic excellence, disciplined leadership, and a supportive learning environment. The teachers consistently guide students toward their full potential.",
   },
   {
-    name: "Aisha Bello",
-    role: "Alumni",
+    name: "Miss Bisola",
+    role: "Former Corps Member",
     message:
-      "STANDARD SCHOOLS, ILORIN gave me a solid foundation in science and leadership. I still use those values today.",
+      "My service year here was inspiring. The leadership, supportive teachers, and well-managed structure made the experience deeply meaningful.",
   },
 ];
