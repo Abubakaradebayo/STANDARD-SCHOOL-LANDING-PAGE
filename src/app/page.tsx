@@ -20,6 +20,7 @@ import {
   Target,
 } from "lucide-react";
 import { ActivitiesCarousel } from "@/components/home/activities-carousel";
+import { StatCounter } from "@/components/home/stat-counter";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { FAQSection } from "@/components/home/faq";
 import { Button } from "@/components/ui/button";
@@ -81,7 +82,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ─── Hero Section ─── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-[92svh] items-center justify-center overflow-hidden md:min-h-screen">
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
@@ -95,12 +96,14 @@ export default function HomePage() {
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAIABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAL/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABBEFEiEiMUFRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AkGKJjI0ESsx5YoASfZqz/9k="
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[var(--navy-950)]/80 via-[var(--navy-900)]/60 to-[var(--navy-950)]/90" />
+          <div className="absolute -left-20 top-24 h-52 w-52 rounded-full bg-[var(--gold)]/10 blur-3xl md:h-72 md:w-72" />
+          <div className="absolute -right-16 bottom-20 h-48 w-48 rounded-full bg-white/10 blur-3xl md:h-64 md:w-64" />
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-32 text-center md:px-6">
-          <div className="mx-auto max-w-3xl space-y-6" data-animate>
-            <div className="mx-auto relative h-24 w-24 md:h-28 md:w-28">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-24 text-center md:px-6 md:py-32">
+          <div className="mx-auto max-w-3xl space-y-5 md:space-y-6" data-animate>
+            <div className="mx-auto relative h-20 w-20 md:h-28 md:w-28">
               <Image
                 src={schoolInfo.logo}
                 alt={schoolInfo.logoAlt}
@@ -110,29 +113,34 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <Badge variant="gold" className="text-sm px-4 py-1.5">
+            <Badge variant="gold" className="px-4 py-1.5 text-xs tracking-[0.14em] md:text-sm">
               {schoolInfo.slogan}
             </Badge>
-            <h1 className="font-heading text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
+            <h1 className="font-heading text-4xl font-bold leading-[1.05] text-white md:text-6xl lg:text-7xl">
               {schoolInfo.name}
             </h1>
-            <p className="mx-auto max-w-xl text-lg text-slate-300 md:text-xl">
+            <p className="mx-auto max-w-2xl text-base leading-7 text-slate-300 md:text-xl md:leading-8">
               Building confident learners with strong academics, character, and community values.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <Button size="xl" variant="gold" href="/admissions">
+            <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-3 pt-2 md:gap-4">
+              <Button size="xl" variant="gold" href="/admissions" className="w-full sm:w-auto">
                 Begin Application
                 <ArrowRight className="h-5 w-5" />
               </Button>
-              <Button size="xl" variant="outline-white" href="/about">
+              <Button size="xl" variant="outline-white" href="/about" className="w-full sm:w-auto">
                 Explore Our School
               </Button>
+            </div>
+            <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-2 pt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-slate-300/85 md:text-xs">
+              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Inclusive Learning</span>
+              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Responsive Management</span>
+              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1">Academic Discipline</span>
             </div>
           </div>
 
           {/* Stats strip */}
           <div
-            className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4"
+            className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 md:mt-16 md:grid-cols-4 md:gap-4"
             data-animate="soft"
           >
             {stats.map((stat, i) => {
@@ -140,12 +148,13 @@ export default function HomePage() {
               return (
                 <div
                   key={stat.key}
-                  className="glass rounded-xl px-4 py-4 text-center"
+                  className="hero-stat-card rounded-2xl px-4 py-4 text-center md:px-5"
                 >
                   <Icon className="mx-auto mb-2 h-5 w-5 text-[var(--gold)]" />
-                  <p className="font-heading text-2xl font-bold text-white md:text-3xl">
-                    {stat.value}
-                  </p>
+                  <StatCounter
+                    value={stat.value}
+                    className="font-heading text-2xl font-bold text-white md:text-3xl"
+                  />
                   <p className="text-xs text-slate-300 mt-1">{stat.label}</p>
                 </div>
               );
@@ -154,7 +163,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-bounce md:block">
           <ChevronDown className="h-6 w-6 text-white/50" />
         </div>
       </section>
@@ -166,7 +175,7 @@ export default function HomePage() {
             {quickHighlights.map((item, i) => {
               const Icon = highlightIcons[i];
               return (
-                <Card key={item} variant="elevated" className="flex items-start gap-4 p-5">
+                <Card key={item} variant="elevated" className="flex h-full items-start gap-4 p-5">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -245,9 +254,10 @@ export default function HomePage() {
               return (
                 <div key={stat.key} className="text-center" data-animate="soft" data-delay={String(i + 1)}>
                   <Icon className="mx-auto mb-3 h-8 w-8 text-[var(--gold)]" />
-                  <p className="font-heading text-4xl font-bold text-[var(--gold)] md:text-5xl">
-                    {stat.value}
-                  </p>
+                  <StatCounter
+                    value={stat.value}
+                    className="font-heading text-4xl font-bold text-[var(--gold)] md:text-5xl"
+                  />
                   <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
                 </div>
               );
@@ -343,7 +353,7 @@ export default function HomePage() {
               <div
                 key={image.src}
                 className={`group relative overflow-hidden rounded-xl ${
-                  i === 0 || i === 5 ? "row-span-2 h-72 md:h-full" : "h-36 md:h-44"
+                  i === 0 || i === 5 ? "row-span-2 h-64 md:h-full" : "h-36 md:h-44"
                 }`}
               >
                 <Image
@@ -383,7 +393,7 @@ export default function HomePage() {
               <Card
                 key={item.name}
                 variant="dark"
-                className="relative"
+                className="relative h-full"
                 data-animate="soft"
                 data-delay={String(i + 1)}
               >
