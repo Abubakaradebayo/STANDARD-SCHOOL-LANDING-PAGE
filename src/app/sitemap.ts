@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { activities } from "@/content/activities";
 
-const baseUrl = "https://standardschoolsilorin.vercel.app";
+const baseUrl = "https://standardschoolsilorin.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = ["", "/about", "/academics", "/admissions", "/activities", "/gallery", "/contact"];

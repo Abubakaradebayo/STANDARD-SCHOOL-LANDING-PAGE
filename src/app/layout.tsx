@@ -29,7 +29,7 @@ const splineSansMono = Spline_Sans_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://standardschoolsilorin.vercel.app"),
+  metadataBase: new URL("https://standardschoolsilorin.com"),
   title: {
     default: `${schoolInfo.name} | Primary & Secondary School in Ilorin`,
     template: `%s | ${schoolInfo.name}`,
