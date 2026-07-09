@@ -39,7 +39,11 @@ export const metadata: Metadata = {
     title: schoolInfo.name,
     description: schoolInfo.description,
     type: "website",
-    images: [schoolInfo.logo],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: schoolInfo.name,
+    description: schoolInfo.description,
   },
   icons: {
     icon: schoolInfo.logo,
