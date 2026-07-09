@@ -19,6 +19,8 @@ export type ActivityPost = {
   coverImage: string;
   images: string[];
   content: string[];
+  /** Set when the gallery holds portrait graphics (e.g. graduand cards) that must not be cropped. */
+  portraitGallery?: boolean;
 };
 
 export const activityCategories: Array<ActivityCategory | "All"> = [
@@ -36,6 +38,52 @@ export const activityCategories: Array<ActivityCategory | "All"> = [
 ];
 
 export const activities: ActivityPost[] = [
+  {
+    slug: "class-of-2k26",
+    title: "Class of 2K26: Primary 5 Graduands",
+    date: "2026-07-02",
+    category: "Awards",
+    excerpt:
+      "Meet the Primary 5 graduating class, led by the head girl and headboy, with future doctors, nurses, bankers and footballers among them.",
+    coverImage: "/images/activities/standard-week/prize-giving-01.jpg",
+    portraitGallery: true,
+    images: [
+      "/images/graduands/olomu-habeebat-abiola.jpg",
+      "/images/graduands/zubair-habeeb.jpg",
+      "/images/graduands/musa-zarah-atinuke.jpg",
+      "/images/graduands/zubair-habeebah-ayoni.jpg",
+      "/images/graduands/abubakar-hadiqoh-wuraola.jpg",
+      "/images/graduands/abdulazeez-abdulazeem.jpg",
+      "/images/graduands/nurudeen-abdulbasit.jpg",
+      "/images/graduands/edogbanya-melchizedek.jpg",
+    ],
+    content: [
+      "Eight pupils crossed the Primary 5 finish line this year, and every one of them leaves a mark: head girl, headboy, and a full bench of prefects who served the school with pride.",
+      "Their ambitions speak for themselves: medicine, nursing, banking, football. We are proud of each of them, and we will be watching them shine. Class of 2K26, the future is bright.",
+    ],
+  },
+  {
+    slug: "standard-week-2026",
+    title: "Standard Week 2026",
+    date: "2026-07-01",
+    category: "Events",
+    excerpt:
+      "A week of learning, discovery, creativity and fun: career day costumes, pupil exhibitions, parents' visits, and prize-giving.",
+    coverImage: "/images/activities/standard-week/career-day-doctors.jpg",
+    images: [
+      "/images/activities/standard-week/career-day-doctors.jpg",
+      "/images/activities/standard-week/career-day-lawyers.jpg",
+      "/images/activities/standard-week/career-day-military.jpg",
+      "/images/activities/standard-week/exhibition-table.jpg",
+      "/images/activities/standard-week/parents-visit.jpg",
+      "/images/activities/standard-week/parents-and-pupils.jpg",
+      "/images/activities/standard-week/prize-giving-01.jpg",
+    ],
+    content: [
+      "Standard Week turned the campus into a fair of ambition. On career day, pupils arrived as the professionals they hope to become: doctors and nurses in scrubs, lawyers in wigs and gowns, soldiers and pilots in uniform.",
+      "Classrooms showed off pupil-made products at the exhibition tables, parents visited to cheer their children on, and the week closed with gifts and prizes for outstanding pupils.",
+    ],
+  },
   {
     slug: "morning-assembly-highlights",
     title: "Morning Assembly Highlights",

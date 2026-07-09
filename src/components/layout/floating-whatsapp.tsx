@@ -1,4 +1,5 @@
 import { schoolInfo } from "@/content/school";
+import { WhatsAppGlyph } from "@/components/graphics/icons";
 
 export function FloatingWhatsApp() {
   return (
@@ -6,10 +7,10 @@ export function FloatingWhatsApp() {
       href={`https://wa.me/${schoolInfo.whatsappRaw}`}
       target="_blank"
       rel="noreferrer"
-      aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-lg font-bold text-white ring-4 ring-[#25D366]/20 transition-colors hover:bg-[#1fba59]"
+      aria-label="Chat with the school on WhatsApp"
+      className="fixed bottom-5 right-5 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full border border-line bg-paper text-navy shadow-plinth transition-colors duration-300 hover:bg-navy hover:text-paper"
     >
-      WA
+      <WhatsAppGlyph className="h-5 w-5" />
     </a>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GalleryGrid } from "@/components/gallery/gallery-grid";
-import { PageHero } from "@/components/layout/page-hero";
+import { PageIntro } from "@/components/layout/page-intro";
 import { schoolInfo } from "@/content/school";
 
 export const metadata: Metadata = {
@@ -11,13 +11,17 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <div>
-      <PageHero
-        title="Gallery"
-        description="Moments from school life. Filter by category and tap any image to view."
-        breadcrumbs={[{ label: "Gallery" }]}
-        backgroundImage="/images/activities/cultural-day/IMG_2226.JPG"
+      <PageIntro
+        index="05"
+        eyebrow="Gallery"
+        title={
+          <>
+            Proof, in <em className="text-cobalt">photographs.</em>
+          </>
+        }
+        lede="Moments from school life across events, classrooms, and the sports field. Filter by category; open any photograph to view it full-screen."
       />
-      <div className="mx-auto w-full max-w-6xl px-4 py-16 md:px-6">
+      <div className="mx-auto max-w-shell px-5 py-16 sm:px-8 md:py-24">
         <GalleryGrid />
       </div>
     </div>

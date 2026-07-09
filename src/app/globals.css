@@ -1,227 +1,171 @@
 @import "tailwindcss";
 
-:root {
-  /* Navy spectrum */
-  --navy-950: #0a1628;
-  --navy-900: #0f2042;
-  --navy-800: #152d5e;
-  --navy-700: #1b3a7a;
-  --navy-600: #1d4ed8;
+/* ────────────────────────────────────────────────────────────────
+   STANDARD SCHOOLS, ILORIN — design tokens
+   Tailwind v4 CSS-first theme. Every token below becomes a
+   semantic utility (bg-navy, text-brass, font-display, ease-swift…).
+   ──────────────────────────────────────────────────────────────── */
 
-  /* Gold accent */
-  --gold: #d4a853;
-  --gold-light: #f0d78c;
-  --gold-dark: #b8922e;
+@theme {
+  /* Wipe Tailwind's default palette — the brand palette is the palette. */
+  --color-*: initial;
 
-  /* Neutrals */
-  --slate-950: #0b1120;
-  --slate-900: #0f172a;
-  --slate-800: #1e293b;
-  --slate-700: #334155;
-  --slate-600: #475569;
-  --slate-500: #64748b;
-  --slate-400: #94a3b8;
-  --slate-300: #cbd5e1;
-  --slate-200: #e2e8f0;
-  --slate-100: #f1f5f9;
-  --slate-50: #f8fafc;
+  --color-white: #ffffff;
+  --color-black: #000000;
 
-  /* Semantic tokens */
-  --background: #ffffff;
-  --surface: #f8fafc;
-  --text: #0f2042;
-  --muted: #475569;
-  --brand: #1d4ed8;
-  --brand-dark: #152d5e;
-  --accent: #dbeafe;
-  --accent-soft: #bfdbfe;
-  --border: #e2e8f0;
+  /* Blues — the brand spine */
+  --color-midnight: #071231; /* deepest navy: dark chapters, footer */
+  --color-navy: #0c2b66; /* brand anchor */
+  --color-royal: #143c96; /* mid-step: hovers on navy, rules on dark */
+  --color-cobalt: #2c5ce6; /* energetic accent: CTAs, links */
+  --color-cobalt-bright: #4470f4; /* cobalt hover */
+  --color-sky: #a8c3f0; /* pale blue: captions & accents on dark */
+  --color-mist: #e8eef8; /* cool tint surface on light */
+
+  /* Warm neutrals */
+  --color-paper: #faf8f2; /* page background */
+  --color-linen: #f0ebe0; /* deeper warm surface */
+  --color-ink: #10182b; /* body text, blue-cast near-black */
+  --color-haze: #5a6880; /* muted text on light */
+  --color-line: #e3ded2; /* warm hairline on paper */
+
+  /* The single warm accent */
+  --color-brass: #c0913e; /* brass: seals, keylines, index numbers */
+  --color-gold: #e7cd8f; /* light brass for dark grounds */
+
+  /* Type */
+  --font-display: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-instrument), "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-archive), "SFMono-Regular", monospace;
+
+  /* Archival caption size + letterspacing for mono labels */
+  --text-2xs: 0.65rem;
+  --text-2xs--line-height: 1.5;
+  --tracking-index: 0.22em; /* mono labels, dates, categories */
+  --tracking-seal: 0.3em; /* eyebrows and kickers */
+
+  /* The site shell width */
+  --container-shell: 88rem;
+
+  /* Motion */
+  --ease-swift: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-exp: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-glide: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Shadow — used sparingly; hairlines do most of the work */
+  --shadow-plinth: 0 24px 48px -24px rgb(7 18 49 / 0.35);
+  --shadow-veil: 0 1px 0 0 rgb(16 24 43 / 0.06);
+
+  /* Signature radius: the arch */
+  --radius-arch: 100rem;
+
+  /* Animations */
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-seal: seal-spin 28s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes seal-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
-* {
-  border-color: var(--border);
+/* ─── Base ─── */
+
+html {
+  scroll-behavior: auto;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: var(--background);
-  color: var(--text);
-  font-family: var(--font-inter, "Inter", "Segoe UI", sans-serif);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.font-heading {
-  font-family: var(--font-playfair, "Playfair Display", Georgia, serif);
+::selection {
+  background-color: var(--color-cobalt);
+  color: var(--color-paper);
 }
 
-/* ─── Animations ─── */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 3px;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+/* ─── Lenis smooth scroll ─── */
+
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out both;
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+/* ─── Editorial primitives ─── */
+
+/* Masked line for GSAP headline reveals.
+   Bottom padding + negative margin keep italic descenders unclipped. */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
 }
 
-.animate-shimmer {
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
+.line-mask > span {
+  display: block;
+  will-change: transform;
 }
 
-/* ─── Scroll reveal ─── */
-
-[data-animate] {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+/* Oversized outlined letterform, used as a background glyph */
+.glyph-outline {
+  -webkit-text-stroke: 1px var(--color-line);
+  color: transparent;
+  user-select: none;
 }
 
-[data-animate].is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.glyph-outline-dark {
+  -webkit-text-stroke: 1px var(--color-royal);
+  color: transparent;
+  user-select: none;
 }
 
-[data-animate][data-animate="soft"] {
-  transform: translateY(12px);
+/* Hidden-scrollbar strip (mobile fallback for the pinned gallery) */
+.no-scrollbar {
+  scrollbar-width: none;
 }
 
-[data-animate][data-delay="1"] {
-  transition-delay: 0.1s;
-}
-[data-animate][data-delay="2"] {
-  transition-delay: 0.2s;
-}
-[data-animate][data-delay="3"] {
-  transition-delay: 0.3s;
-}
-[data-animate][data-delay="4"] {
-  transition-delay: 0.4s;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-animate] {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .animate-marquee,
+  .animate-seal {
+    animation: none;
   }
-}
-
-/* ─── Utility classes ─── */
-
-.glass {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.hero-stat-card {
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.45);
-}
-
-main {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.gradient-navy {
-  background: linear-gradient(135deg, var(--navy-950), var(--navy-900), var(--navy-800));
-}
-
-.gradient-gold {
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
-}
-
-.section-dark {
-  background: linear-gradient(135deg, var(--navy-950), var(--navy-900));
-  color: #ffffff;
-}
-
-.section-light {
-  background: var(--surface);
-}
-
-.section-accent {
-  background: linear-gradient(135deg, var(--slate-50), #eef2ff);
-}
-
-/* ─── Carousel ─── */
-
-.activities-track {
-  --carousel-step: 100%;
-}
-
-@media (min-width: 768px) {
-  .activities-track {
-    --carousel-step: 33.333333%;
-  }
-}
-
-/* ─── Gold underline accent ─── */
-
-.gold-underline::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  margin-top: 12px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-}
-
-.gold-underline-center::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  margin: 12px auto 0;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
 }

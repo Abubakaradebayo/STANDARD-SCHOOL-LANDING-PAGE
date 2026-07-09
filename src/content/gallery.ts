@@ -19,6 +19,12 @@ export const galleryCategories: GalleryCategory[] = [
 
 // Interleaved so home-page slice(0, 8) shows variety across all categories
 export const galleryImages: GalleryImage[] = [
+  // Standard Week 2026
+  { src: "/images/activities/standard-week/career-day-doctors.jpg", alt: "Career day pupils dressed as doctors and nurses", category: "Events" },
+  { src: "/images/activities/standard-week/career-day-lawyers.jpg", alt: "Career day pupils dressed as lawyers with parents", category: "Events" },
+  { src: "/images/activities/standard-week/exhibition-table.jpg", alt: "Standard Week exhibition of pupil-made products", category: "Classroom" },
+  { src: "/images/activities/standard-week/prize-giving-01.jpg", alt: "Prize-giving during Standard Week", category: "Events" },
+
   // Round 1
   { src: "/images/activities/cultural-day/IMG_2087.JPG", alt: "Cultural day parade", category: "Events" },
   { src: "/images/activities/class-activities/IMG_2092.JPG", alt: "Pupils in class", category: "Classroom" },

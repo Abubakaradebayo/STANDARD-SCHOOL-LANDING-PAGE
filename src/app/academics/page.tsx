@@ -1,22 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  Baby,
-  Flower2,
-  School,
-  BookMarked,
-  Newspaper,
-  Leaf,
-  Volleyball,
-  Puzzle,
-  MessageCircle,
-  Rocket,
-  ArrowRight,
-} from "lucide-react";
-import { PageHero } from "@/components/layout/page-hero";
-import { SectionHeading } from "@/components/layout/section-heading";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { PageIntro } from "@/components/layout/page-intro";
+import { SectionLabel } from "@/components/layout/section-label";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { ArrowDiagonal, MarkStar } from "@/components/graphics/icons";
 import { schoolInfo } from "@/content/school";
 
 export const metadata: Metadata = {
@@ -24,34 +12,38 @@ export const metadata: Metadata = {
   description: `Curriculum and co-curricular programs at ${schoolInfo.name}.`,
 };
 
-const sections = [
+const levels = [
   {
-    level: "Creche & Toddler",
-    details:
+    index: "01",
+    title: "Creche & Toddler",
+    detail:
       "Early years care and play-based learning focused on communication, confidence, and social development.",
-    icon: Baby,
-    color: "from-pink-500 to-rose-600",
+    image: "/images/activities/class-activities/17e87c0f-3342-4623-9487-15945501e7ce.JPG",
+    imageAlt: "Nursery children at lunch time",
   },
   {
-    level: "Nursery & K.G",
-    details:
+    index: "02",
+    title: "Nursery & K.G",
+    detail:
       "Foundational literacy, numeracy, creative arts, and social skills in a structured, joyful environment.",
-    icon: Flower2,
-    color: "from-emerald-500 to-teal-600",
+    image: "/images/activities/class-activities/IMG_2394.JPG",
+    imageAlt: "Nursery classroom with alphabet charts",
   },
   {
-    level: "Primary",
-    details:
+    index: "03",
+    title: "Primary",
+    detail:
       "Structured literacy, mathematics, sciences, social studies, and digital awareness with continuous assessment.",
-    icon: School,
-    color: "from-blue-500 to-indigo-600",
+    image: "/images/activities/class-activities/04ff1d25-3fc1-41ba-8a16-22b2fe6d22aa.JPG",
+    imageAlt: "Primary pupils at their desks",
   },
   {
-    level: "Secondary (J.S 1-3)",
-    details:
-      "Strong WAEC/NECO preparation in sciences, arts, and commercial subjects, supported by guidance counseling.",
-    icon: BookMarked,
-    color: "from-purple-500 to-violet-600",
+    index: "04",
+    title: "Junior Secondary",
+    detail:
+      "Strong exam preparation in sciences, arts, and commercial subjects, supported by guidance counselling.",
+    image: "/images/activities/class-activities/a5248410-0d0b-433a-8b8f-2577ec74620d.JPG",
+    imageAlt: "Secondary students studying together",
   },
 ];
 
@@ -70,114 +62,121 @@ const subjects = [
   "Islamic Studies",
 ];
 
-const extras = [
-  { name: "Press Club", icon: Newspaper },
-  { name: "JET Club", icon: Rocket },
-  { name: "Young Farmers Club", icon: Leaf },
-  { name: "Sports & Athletics", icon: Volleyball },
-  { name: "Indoor Games & Chess", icon: Puzzle },
-  { name: "Debates & Competitions", icon: MessageCircle },
+const clubs = [
+  "Press Club",
+  "JET Club",
+  "Young Farmers Club",
+  "Sports & Athletics",
+  "Indoor Games & Chess",
+  "Debates & Competitions",
 ];
 
 export default function AcademicsPage() {
   return (
     <div>
-      <PageHero
-        title="Academics"
-        description="A balanced, future-ready curriculum combining national standards with practical learning."
-        breadcrumbs={[{ label: "Academics" }]}
+      <PageIntro
+        index="02"
+        eyebrow="Academics"
+        title={
+          <>
+            A serious curriculum, <em className="text-cobalt">taught with heart.</em>
+          </>
+        }
+        lede="National standards, practical learning, and continuous assessment, from first words in the creche to exam readiness in junior secondary."
       />
 
-      <div className="mx-auto w-full max-w-6xl space-y-20 px-4 py-16 md:px-6">
-        {/* Academic Levels */}
-        <section data-animate>
-          <SectionHeading
-            eyebrow="Programs"
-            title="Academic levels we offer"
-            description="From early years through junior secondary, every stage is carefully structured."
-          />
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {sections.map((section, i) => {
-              const Icon = section.icon;
-              return (
-                <Card
-                  key={section.level}
-                  variant="elevated"
-                  className="relative overflow-hidden"
-                  data-animate="soft"
-                  data-delay={String(i + 1)}
-                >
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${section.color}`}
-                  />
-                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="mt-4 text-xl">{section.level}</CardTitle>
-                  <CardDescription className="mt-2">{section.details}</CardDescription>
-                </Card>
-              );
-            })}
-          </div>
-        </section>
+      {/* Levels ledger */}
+      <section className="mx-auto max-w-shell px-5 py-20 sm:px-8 md:py-28" aria-label="Academic levels">
+        <div>
+          {levels.map((level, i) => (
+            <Reveal key={level.index} delay={i * 0.05}>
+              <div className="grid grid-cols-[auto_1fr] items-center gap-x-6 border-b border-line py-8 first:border-t sm:grid-cols-[3rem_6rem_1fr] sm:gap-x-10 md:py-10">
+                <span className="font-mono text-xs text-brass">{level.index}</span>
+                <div className="relative hidden h-24 w-20 overflow-hidden rounded-t-full sm:block">
+                  <Image src={level.image} alt={level.imageAlt} fill sizes="80px" className="object-cover" />
+                </div>
+                <div>
+                  <h2 className="font-display text-2xl font-medium tracking-tight text-ink sm:text-3xl lg:text-4xl">
+                    {level.title}
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-haze sm:text-base">
+                    {level.detail}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
-        {/* Curriculum */}
-        <section data-animate>
-          <SectionHeading
-            eyebrow="Curriculum"
-            title="What students learn"
-            description="Core subjects are taught with regular assessments, revision plans, and parent updates."
-          />
-          <div className="mt-6 flex flex-wrap gap-2">
-            {subjects.map((subject) => (
-              <Badge key={subject} variant="outlined" className="text-sm px-4 py-2">
-                {subject}
-              </Badge>
-            ))}
-          </div>
-          <Card className="mt-6">
-            <CardDescription className="text-base leading-7">
-              Our curriculum includes English Language, Mathematics, Basic and Integrated Sciences,
-              ICT, Civic Education, Social Studies, and practical subjects tailored to each class
-              level.
-            </CardDescription>
-          </Card>
-        </section>
+      {/* Subjects flow */}
+      <section className="bg-mist py-20 md:py-28" aria-labelledby="subjects-heading">
+        <div className="mx-auto max-w-shell px-5 sm:px-8">
+          <SectionLabel index="→" title="The subjects" />
+          <h2 id="subjects-heading" className="sr-only">
+            What students learn
+          </h2>
+          <Reveal>
+            <p className="mt-12 max-w-5xl font-display text-2xl font-medium leading-[1.6] tracking-tight text-ink sm:text-3xl sm:leading-[1.6]">
+              {subjects.map((subject, i) => (
+                <span key={subject} className="whitespace-nowrap">
+                  {subject}
+                  {i < subjects.length - 1 ? (
+                    <MarkStar className="mx-4 inline-block h-3.5 w-3.5 -translate-y-1 text-brass" />
+                  ) : (
+                    "."
+                  )}{" "}
+                </span>
+              ))}
+            </p>
+            <p className="mt-10 max-w-2xl leading-relaxed text-haze">
+              Core subjects are taught with regular assessments, revision plans, and parent
+              updates, with practical subjects tailored to each class level.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-        {/* Extra-Curricular */}
-        <section data-animate="soft">
-          <SectionHeading
-            eyebrow="Extra-Curricular"
-            title="Beyond the classroom"
-            description="Students build confidence through clubs, sports, and practical projects."
-          />
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {extras.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <Card
-                  key={item.name}
-                  variant="elevated"
-                  className="flex items-center gap-4 p-5"
-                  data-animate="soft"
-                  data-delay={String(i + 1)}
-                >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--gold)]/8 text-[var(--gold-dark)]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <p className="font-medium text-[var(--text)]">{item.name}</p>
-                </Card>
-              );
-            })}
+      {/* Clubs */}
+      <section className="mx-auto max-w-shell px-5 py-24 sm:px-8 md:py-36" aria-labelledby="clubs-heading">
+        <SectionLabel index="→" title="Beyond the classroom" />
+        <div className="mt-14 grid gap-x-16 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Reveal>
+              <h2
+                id="clubs-heading"
+                className="font-display text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl"
+              >
+                Confidence is <em className="text-cobalt">extracurricular.</em>
+              </h2>
+              <p className="mt-6 max-w-sm leading-relaxed text-haze">
+                Clubs, sports, and practical projects give every child a second place to lead.
+              </p>
+              <Link
+                href="/admissions"
+                className="mt-10 inline-flex items-center gap-3 rounded-full bg-navy px-7 py-3.5 text-sm font-medium text-paper transition-colors duration-300 hover:bg-cobalt"
+              >
+                Join the school
+                <ArrowDiagonal className="h-3 w-3" />
+              </Link>
+            </Reveal>
           </div>
-          <div className="mt-8 text-center">
-            <Button href="/admissions">
-              Join Our School
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-        </section>
-      </div>
+          <RevealGroup className="mt-12 lg:col-span-7 lg:col-start-6 lg:mt-0">
+            <ul>
+              {clubs.map((club, i) => (
+                <RevealItem key={club}>
+                  <li className="flex items-baseline gap-5 border-b border-line py-5 first:border-t">
+                    <span className="font-mono text-xs text-brass">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-display text-xl text-ink sm:text-2xl">{club}</span>
+                  </li>
+                </RevealItem>
+              ))}
+            </ul>
+          </RevealGroup>
+        </div>
+      </section>
     </div>
   );
 }

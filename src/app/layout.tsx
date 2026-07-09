@@ -1,22 +1,30 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Fraunces, Instrument_Sans, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/navbar";
+import { SmoothScroll } from "@/components/providers/smooth-scroll";
+import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp";
-import { RouteLoader } from "@/components/layout/route-loader";
-import { RevealOnScroll } from "@/components/layout/reveal-on-scroll";
 import { schoolInfo } from "@/content/school";
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-fraunces",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
   display: "swap",
 });
 
-const inter = Inter({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const splineSansMono = Spline_Sans_Mono({
+  subsets: ["latin"],
+  variable: "--font-archive",
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -42,14 +50,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="antialiased" suppressHydrationWarning>
-        <RouteLoader />
-        <RevealOnScroll />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <FloatingWhatsApp />
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${instrumentSans.variable} ${splineSansMono.variable}`}
+    >
+      <body suppressHydrationWarning>
+        <SmoothScroll>
+          <Header />
+          <main id="content">{children}</main>
+          <Footer />
+          <FloatingWhatsApp />
+        </SmoothScroll>
       </body>
     </html>
   );

@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
-import {
-  Phone,
-  FileText,
-  FolderOpen,
-  UserCheck,
-  CheckCircle2,
-  Download,
-  MessageCircle,
-} from "lucide-react";
-import { PageHero } from "@/components/layout/page-hero";
-import { SectionHeading } from "@/components/layout/section-heading";
-import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { PageIntro } from "@/components/layout/page-intro";
+import { SectionLabel } from "@/components/layout/section-label";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { FaqSection } from "@/components/home/faq";
+import { ArrowDiagonal, MarkStar } from "@/components/graphics/icons";
 import { schoolInfo } from "@/content/school";
 
 export const metadata: Metadata = {
@@ -21,34 +13,29 @@ export const metadata: Metadata = {
 
 const steps = [
   {
-    step: 1,
-    title: "Contact Admissions",
-    desc: "Reach out via call or WhatsApp to express interest.",
-    icon: Phone,
+    index: "01",
+    title: "Contact admissions",
+    detail: "Reach out by call or WhatsApp to express interest, or simply visit the front office.",
   },
   {
-    step: 2,
-    title: "Submit Application",
-    desc: "Complete and submit the admission form.",
-    icon: FileText,
+    index: "02",
+    title: "Submit the application",
+    detail: "Download the admission form, complete it, and return it in person or by WhatsApp.",
   },
   {
-    step: 3,
-    title: "Provide Documents",
-    desc: "Submit all required documents to the office.",
-    icon: FolderOpen,
+    index: "03",
+    title: "Provide documents",
+    detail: "Bring the required documents to the school office for verification.",
   },
   {
-    step: 4,
+    index: "04",
     title: "Screening",
-    desc: "Attend screening or interview if applicable.",
-    icon: UserCheck,
+    detail: "Your child attends a gentle placement exercise or interview where applicable.",
   },
   {
-    step: 5,
-    title: "Admission Decision",
-    desc: "Receive admission decision and fee schedule.",
-    icon: CheckCircle2,
+    index: "05",
+    title: "Decision & enrolment",
+    detail: "Receive the admission decision and fee schedule, then join the school family.",
   },
 ];
 
@@ -56,111 +43,113 @@ const requirements = [
   "Completed admission form",
   "Birth certificate",
   "Two recent passport photographs",
-  "Last school report/result",
+  "Last school report / result",
   "Transfer certificate (if applicable)",
 ];
 
 export default function AdmissionsPage() {
   return (
     <div>
-      <PageHero
-        title="Admissions"
-        description="Simple and parent-friendly admission process. We keep enrollment straightforward."
-        breadcrumbs={[{ label: "Admissions" }]}
+      <PageIntro
+        index="03"
+        eyebrow="Admissions"
+        title={
+          <>
+            Five steps to a <em className="text-cobalt">Standard</em> education.
+          </>
+        }
+        lede="Intake runs every term, with the major intake before September resumption. The process is simple and parent-friendly. Start it today."
       />
 
-      <div className="mx-auto w-full max-w-6xl space-y-20 px-4 py-16 md:px-6">
-        {/* Timeline Steps */}
-        <section data-animate>
-          <SectionHeading
-            eyebrow="Process"
-            title="How to apply"
-            description="Five straightforward steps to enroll your child."
-          />
-          <div className="mt-10 relative">
-            {/* Vertical connecting line */}
-            <div className="absolute left-6 top-0 bottom-0 hidden w-0.5 bg-gradient-to-b from-[var(--gold)] to-[var(--gold-light)] md:block" />
-            <div className="space-y-6">
-              {steps.map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.step}
-                    className="relative flex gap-6 md:pl-0"
-                    data-animate="soft"
-                    data-delay={String(i + 1)}
-                  >
-                    {/* Step number circle */}
-                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-[var(--navy-950)] font-bold ring-4 ring-[var(--gold)]/20">
-                      {item.step}
+      {/* Process ledger */}
+      <section className="mx-auto max-w-shell px-5 py-20 sm:px-8 md:py-28" aria-label="How to apply">
+        <div className="grid gap-16 lg:grid-cols-12">
+          <RevealGroup className="lg:col-span-7">
+            <ol>
+              {steps.map((step) => (
+                <RevealItem key={step.index}>
+                  <li className="grid grid-cols-[4rem_1fr] items-start gap-x-6 border-b border-line py-8 first:border-t">
+                    <span className="font-display text-4xl font-medium text-brass sm:text-5xl">
+                      {step.index}
+                    </span>
+                    <div>
+                      <h2 className="font-display text-2xl font-medium tracking-tight text-ink sm:text-3xl">
+                        {step.title}
+                      </h2>
+                      <p className="mt-2 max-w-xl leading-relaxed text-haze">{step.detail}</p>
                     </div>
-                    <Card variant="elevated" className="flex-1">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-base">{item.title}</CardTitle>
-                          <CardDescription className="mt-1">{item.desc}</CardDescription>
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-                );
-              })}
+                  </li>
+                </RevealItem>
+              ))}
+            </ol>
+          </RevealGroup>
+
+          {/* Requirements - sticky aside */}
+          <div className="lg:col-span-4 lg:col-start-9">
+            <div className="lg:sticky lg:top-32">
+              <Reveal>
+                <SectionLabel index="→" title="What you need" />
+                <ul className="mt-8 space-y-4">
+                  {requirements.map((item) => (
+                    <li key={item} className="flex items-start gap-4">
+                      <MarkStar className="mt-1.5 h-3 w-3 shrink-0 text-brass" />
+                      <span className="text-ink">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-8 border-t border-line pt-6 text-sm leading-relaxed text-haze">
+                  Prepare these ahead of your visit for a smooth enrolment. The accounts office can
+                  discuss flexible fee instalments after registration.
+                </p>
+              </Reveal>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Requirements */}
-        <section data-animate="soft">
-          <SectionHeading
-            eyebrow="Requirements"
-            title="What you need"
-            description="Prepare the following documents for a smooth enrollment."
-          />
-          <Card className="mt-6">
-            <ul className="space-y-3">
-              {requirements.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm text-[var(--muted)]">
-                  <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        </section>
+      {/* Download band */}
+      <section className="bg-navy py-20 text-paper md:py-28" aria-labelledby="download-heading">
+        <div className="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-10 px-5 sm:px-8">
+          <div className="max-w-xl">
+            <h2
+              id="download-heading"
+              className="font-display text-3xl font-medium leading-[1.12] tracking-tight sm:text-4xl"
+            >
+              The form is <em className="text-gold">ready when you are.</em>
+            </h2>
+            <p className="mt-4 leading-relaxed text-sky">
+              Download it, fill it out, and submit in person at our office, or send a scan or
+              photo via WhatsApp or email.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-5">
+            <a
+              href={schoolInfo.admissionsFormLink}
+              download
+              className="inline-flex items-center gap-3 rounded-full bg-paper px-7 py-3.5 text-sm font-medium text-navy transition-colors duration-300 hover:bg-gold"
+            >
+              Download admission form
+              <ArrowDiagonal className="h-3 w-3" />
+            </a>
+            <a
+              href={`tel:${schoolInfo.phoneRaw}`}
+              className="font-mono text-xs uppercase tracking-index text-sky underline-offset-8 hover:text-paper hover:underline"
+            >
+              {schoolInfo.phoneDisplay}
+            </a>
+            <a
+              href={`https://wa.me/${schoolInfo.whatsappRaw}`}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-xs uppercase tracking-index text-sky underline-offset-8 hover:text-paper hover:underline"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
 
-        {/* Download CTA */}
-        <section data-animate>
-          <Card variant="dark" className="relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--gold)] to-[var(--gold-light)]" />
-            <div className="relative grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
-              <div>
-                <CardTitle className="text-xl text-white">Download Admission Form</CardTitle>
-                <CardDescription className="mt-2 text-slate-400">
-                  Get the form, fill it out, and submit in person at our office or send a
-                  scan/photo via WhatsApp or email.
-                </CardDescription>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="gold" href={schoolInfo.admissionsFormLink}>
-                  <Download className="h-4 w-4" />
-                  Download Form
-                </Button>
-                <Button variant="outline-white" href={`tel:${schoolInfo.phoneRaw}`}>
-                  <Phone className="h-4 w-4" />
-                  Call
-                </Button>
-                <Button variant="outline-white" href={`https://wa.me/${schoolInfo.whatsappRaw}`}>
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </section>
-      </div>
+      <FaqSection index="04" />
     </div>
   );
 }

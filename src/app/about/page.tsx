@@ -1,180 +1,152 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import {
-  Target,
-  Eye,
-  Heart,
-  Monitor,
-  BookOpen,
-  Bus,
-  Activity,
-  Shield,
-  Stethoscope,
-} from "lucide-react";
-import { PageHero } from "@/components/layout/page-hero";
-import { SectionHeading } from "@/components/layout/section-heading";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { coreValues, facilities, schoolInfo } from "@/content/school";
+import { PageIntro } from "@/components/layout/page-intro";
+import { SectionLabel } from "@/components/layout/section-label";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { ValuesMarquee } from "@/components/home/values-marquee";
+import { facilities, schoolInfo } from "@/content/school";
 
 export const metadata: Metadata = {
   title: "About",
   description: `Learn about ${schoolInfo.name}'s mission, values, leadership, and facilities.`,
 };
 
-const missionCards = [
-  {
-    icon: Target,
-    title: "Mission",
-    description:
-      "To provide a nurturing and inclusive environment that fosters academic excellence, critical thinking, and character development through dedicated teaching and community engagement.",
-  },
-  {
-    icon: Eye,
-    title: "Vision",
-    description:
-      "To empower pupils and students to become compassionate, innovative, disciplined, and proactive global citizens who positively impact the future.",
-  },
-  {
-    icon: Heart,
-    title: "Core Values",
-    description: coreValues.join(" \u2022 "),
-  },
-];
-
-const facilityIcons = [Monitor, BookOpen, BookOpen, Bus, Activity, Stethoscope];
-
 export default function AboutPage() {
   return (
     <div>
-      <PageHero
-        title="About Us"
-        description="A nurturing school community committed to academic excellence and strong character."
-        breadcrumbs={[{ label: "About" }]}
+      <PageIntro
+        index="01"
+        eyebrow="About the school"
+        title={
+          <>
+            Excellence is taught. <em className="text-cobalt">Character is caught.</em>
+          </>
+        }
+        lede="Since our founding, Standard Schools has supported children from the creche through junior secondary with one balanced focus: academics, leadership, and discipline, together."
       />
 
-      <div className="mx-auto w-full max-w-6xl space-y-20 px-4 py-16 md:px-6">
-        {/* Intro */}
-        <section className="max-w-3xl" data-animate>
-          <SectionHeading
-            eyebrow="Who We Are"
-            title="Where excellence meets character"
-            description="STANDARD SCHOOLS, ILORIN supports children from creche through secondary school with a balanced focus on academics, leadership, and discipline."
-          />
-        </section>
+      {/* Mission / Vision spread */}
+      <section className="mx-auto max-w-shell px-5 py-20 sm:px-8 md:py-28" aria-label="Mission and vision">
+        <div className="grid gap-14 lg:grid-cols-2 lg:gap-0">
+          <Reveal className="lg:border-r lg:border-line lg:pr-16">
+            <p className="font-mono text-xs uppercase tracking-seal text-brass">Our mission</p>
+            <p className="mt-6 font-display text-2xl font-medium leading-[1.3] tracking-tight text-ink sm:text-3xl">
+              To provide a nurturing and inclusive environment that fosters academic excellence,
+              critical thinking, and character through dedicated teaching and community
+              engagement.
+            </p>
+          </Reveal>
+          <Reveal delay={0.12} className="lg:pl-16">
+            <p className="font-mono text-xs uppercase tracking-seal text-brass">Our vision</p>
+            <p className="mt-6 font-display text-2xl font-medium leading-[1.3] tracking-tight text-ink sm:text-3xl">
+              To raise compassionate, innovative, disciplined and proactive citizens who positively
+              shape the future, beginning here in Ilorin.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-        {/* Mission / Vision / Values */}
-        <section className="grid gap-6 md:grid-cols-3" data-animate="soft">
-          {missionCards.map((card, i) => {
-            const Icon = card.icon;
-            return (
-              <Card key={card.title} variant="elevated" data-animate="soft" data-delay={String(i + 1)}>
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--gold)]/8 text-[var(--gold-dark)]">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <CardTitle className="mt-4 text-xl">{card.title}</CardTitle>
-                <CardDescription className="mt-2">{card.description}</CardDescription>
-              </Card>
-            );
-          })}
-        </section>
+      <ValuesMarquee />
 
-        {/* Head Teacher */}
-        <section data-animate>
-          <SectionHeading
-            eyebrow="Leadership"
-            title="Message from the School Cordinator"
-            description="We partner with families to shape confident, responsible, and capable learners."
-          />
-          <div className="mt-8 grid gap-8 md:grid-cols-[280px_1fr] md:items-center">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-2xl border-2 border-[var(--navy-800)]/15" />
-              <div className="relative h-72 w-full overflow-hidden rounded-2xl md:h-80">
+      {/* Leadership */}
+      <section className="mx-auto max-w-shell px-5 py-24 sm:px-8 md:py-36" aria-labelledby="leadership-heading">
+        <SectionLabel index="02" title="Leadership" />
+        <div className="mt-14 grid gap-14 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <div className="relative mx-auto w-3/4 max-w-xs lg:w-full">
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-4 -left-4 h-full w-full rounded-t-full border border-brass"
+              />
+              <div className="relative aspect-[3/4] overflow-hidden rounded-t-full">
                 <Image
                   src="/images/leadership/head-teacher.jpg"
-                  alt="Mrs Sulaimon Muinat, School Cordinator"
+                  alt="Mrs Sulaimon Muinat, School Coordinator"
                   fill
+                  sizes="(min-width: 1024px) 28vw, 75vw"
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 280px"
                 />
               </div>
             </div>
-            <Card variant="elevated">
-              <CardDescription className="text-base leading-7">
-                Every child is unique, and I am proud to lead a team that tailors learning to meet
-                individual needs. I am deeply committed to ensuring that every child feels safe,
-                valued, and empowered to reach their full potential. I encourage every pupil and
-                student to dream big and every staff member to keep inspiring. Together, we can make
-                this school a place where young hearts and minds shine bright.
-              </CardDescription>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="h-1 w-8 rounded-full bg-[var(--gold)]" />
-                <div>
-                  <p className="font-semibold text-[var(--text)]">Mrs Sulaimon Muinat</p>
-                  <p className="text-sm text-[var(--muted)]">School Cordinator</p>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </section>
-
-        {/* Core Values */}
-        <section data-animate="soft">
-          <SectionHeading
-            eyebrow="Values"
-            title="What we stand for"
-            description="Our core values guide every interaction, lesson, and decision."
-          />
-          <div className="mt-6 flex flex-wrap gap-3">
-            {coreValues.map((value) => (
-              <div
-                key={value}
-                className="flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/5 px-5 py-2.5"
+          </Reveal>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <Reveal>
+              <h2
+                id="leadership-heading"
+                className="font-display text-2xl font-medium leading-[1.3] tracking-tight text-ink sm:text-3xl lg:text-4xl"
               >
-                <Shield className="h-4 w-4 text-[var(--gold-dark)]" />
-                <span className="text-sm font-medium text-[var(--text)]">{value}</span>
+                &ldquo;Every child is unique, and every child here is known. Our team tailors
+                learning to individual needs, so that each pupil feels safe, valued, and empowered
+                to reach their full potential.&rdquo;
+              </h2>
+              <p className="mt-6 max-w-xl leading-relaxed text-haze">
+                I encourage every pupil and student to dream big, and every staff member to keep
+                inspiring. Together, we make this school a place where young hearts and minds shine
+                bright.
+              </p>
+              <div className="mt-10 flex items-baseline gap-4">
+                <span className="h-px w-10 self-center bg-brass" aria-hidden="true" />
+                <span className="font-medium text-ink">Mrs Sulaimon Muinat</span>
+                <span className="font-mono text-2xs uppercase tracking-index text-haze">
+                  School Coordinator
+                </span>
               </div>
-            ))}
+            </Reveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Facilities */}
-        <section data-animate>
-          <SectionHeading
-            eyebrow="Facilities"
-            title="Learning spaces built for growth"
-            description="We maintain practical facilities that support teaching, safety, and development."
-          />
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {facilities.map((facility, i) => {
-              const Icon = facilityIcons[i];
-              return (
-                <Card key={facility} variant="elevated" className="flex items-center gap-4 p-4">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/8 text-[var(--brand)]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <p className="text-sm font-medium text-[var(--text)]">{facility}</p>
-                </Card>
-              );
-            })}
+      {/* Discipline statement */}
+      <section className="bg-navy py-24 text-paper md:py-32" aria-labelledby="culture-heading">
+        <div className="mx-auto max-w-shell px-5 sm:px-8">
+          <SectionLabel index="03" title="Culture & discipline" dark />
+          <Reveal>
+            <h2
+              id="culture-heading"
+              className="mt-12 max-w-4xl font-display text-3xl font-medium leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl"
+            >
+              Firm, respectful, and <em className="text-gold">growth-focused.</em>
+            </h2>
+            <p className="mt-8 max-w-2xl leading-relaxed text-sky">
+              We teach students to be punctual, respectful, and accountable for their actions
+              through positive correction, close parent communication, and mentorship rather than
+              fear. The goal is self-discipline, empathy, and strong moral values that outlast the
+              school day.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Facilities index */}
+      <section className="mx-auto max-w-shell px-5 py-24 sm:px-8 md:py-36" aria-labelledby="facilities-heading">
+        <SectionLabel index="04" title="On campus" />
+        <div className="mt-14 grid gap-x-16 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Reveal>
+              <h2
+                id="facilities-heading"
+                className="font-display text-3xl font-medium leading-[1.15] tracking-tight text-ink sm:text-4xl"
+              >
+                Built for the work of <em className="text-cobalt">learning.</em>
+              </h2>
+            </Reveal>
           </div>
-        </section>
-
-        {/* Culture */}
-        <section data-animate="soft">
-          <SectionHeading
-            eyebrow="Culture"
-            title="School culture and discipline"
-            description="Our discipline system is firm, respectful, and growth-focused."
-          />
-          <Card className="mt-6 border-l-4 border-l-[var(--gold)]">
-            <CardDescription className="text-base leading-7">
-              We teach students to be punctual, respectful, and accountable for their actions. We use
-              positive correction, close parent communication, and mentorship rather than fear-based
-              methods. The goal is to build self-discipline, empathy, and strong moral values.
-            </CardDescription>
-          </Card>
-        </section>
-      </div>
+          <RevealGroup className="mt-10 lg:col-span-7 lg:col-start-6 lg:mt-0">
+            <ul>
+              {facilities.map((facility, i) => (
+                <RevealItem key={facility}>
+                  <li className="flex items-baseline gap-5 border-b border-line py-5 first:border-t">
+                    <span className="font-mono text-xs text-brass">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-display text-xl text-ink sm:text-2xl">{facility}</span>
+                  </li>
+                </RevealItem>
+              ))}
+            </ul>
+          </RevealGroup>
+        </div>
+      </section>
     </div>
   );
 }
